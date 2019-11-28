@@ -18,6 +18,11 @@ public class ImagePGM {
 
     private String filename;
     private BufferedWriter bufferedWriter;
+    private String commentaire;
+    private float largeur;
+    private float hauteur;
+    private int nivGrisMax;
+    private int[][] image; 
 
     public String getFilename() {
         return filename;
@@ -35,6 +40,13 @@ public class ImagePGM {
         this.bufferedWriter = bufferedWriter;
     }
 
+
+    
+    //Constructeur à partir d'un fichier
+    public ImagePGM(String file){
+        
+    }
+    
     /**
      *
      */
