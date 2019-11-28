@@ -22,7 +22,7 @@ public class ImagePGM {
     private int largeur;
     private int hauteur;
     private int nivGrisMax;
-    private int[][] image; 
+    private int[][] image;
 
     public String getFilename() {
         return filename;
@@ -40,13 +40,11 @@ public class ImagePGM {
         this.bufferedWriter = bufferedWriter;
     }
 
-
-    
     //Constructeur à partir d'un fichier
-    public ImagePGM(String file){
-        
+    public ImagePGM(String file) {
+
     }
-    
+
     /**
      *
      */
@@ -69,8 +67,8 @@ public class ImagePGM {
             bufferedWriter.newLine();
             bufferedWriter.write(this.nivGrisMax);
             bufferedWriter.newLine();
-            for (int i = 0; i<image.length; i++){
-                for (int j = 0; j<image[i].length; j++) {
+            for (int i = 0; i < image.length; i++) {
+                for (int j = 0; j < image[i].length; j++) {
                     bufferedWriter.write(Integer.toString(image[i][j]) + " ");
                 }
                 bufferedWriter.newLine();
@@ -96,5 +94,25 @@ public class ImagePGM {
             }
         }
 
+    }
+
+    public int[][] histo() {
+        
+        //creation du tableau
+        int[] histoTab = new int[this.nivGrisMax];
+        for (int i = 0; i < image.length; i++) {
+            for (int j = 0; j < image[i].length; j++) {
+                histoTab[image[i][j]]++;
+            }
+        }
+        //recherche du max de ce tableau
+        int maxHistoTab = -1;
+        for (int k = 0; k< histoTab.length; k++) {
+            maxHistoTab = Integer.max(maxHistoTab,histoTab[k]);
+        }
+        int [][] histoValues = new int[256][maxHistoTab];
+        //A FINIR
+        
+        return histoValues;
     }
 }
