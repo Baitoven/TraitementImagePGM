@@ -106,8 +106,7 @@ public class ImagePGM {
 
     }
 
-    public int[][] histo() {
-        
+    public void histo() {
         //creation du tableau
         int[] histoTab = new int[this.nivGrisMax];
         for (int i = 0; i < image.length; i++) {
@@ -122,7 +121,5 @@ public class ImagePGM {
         }
         int [][] histoValues = new int[256][maxHistoTab];
         //A FINIR
-        System.out.println("coucou");
-        return histoValues;
     }
 }
