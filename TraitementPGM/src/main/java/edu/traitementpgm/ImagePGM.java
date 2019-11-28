@@ -122,7 +122,7 @@ public class ImagePGM {
         }
         int [][] histoValues = new int[256][maxHistoTab];
         //A FINIR
-        
+        System.out.println("coucou");
         return histoValues;
     }
 }
