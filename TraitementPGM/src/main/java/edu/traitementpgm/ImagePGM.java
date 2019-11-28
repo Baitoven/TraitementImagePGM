@@ -106,9 +106,13 @@ public class ImagePGM {
 
     }
 
-    public void histo() {
+    public void histo() throws IOException {
         //creation du tableau
-        int[] histoTab = new int[this.nivGrisMax];
+        ImagePGM im = new ImagePGM("histo.pgm");
+        im.largeur = this.nivGrisMax + 1;
+        im.nivGrisMax = 255;
+        int[] histoTab = new int[im.largeur];
+       
         for (int i = 0; i < image.length; i++) {
             for (int j = 0; j < image[i].length; j++) {
                 histoTab[image[i][j]]++;
@@ -119,7 +123,9 @@ public class ImagePGM {
         for (int k = 0; k< histoTab.length; k++) {
             maxHistoTab = Integer.max(maxHistoTab,histoTab[k]);
         }
-        int [][] histoValues = new int[256][maxHistoTab];
+        im.hauteur = maxHistoTab;
+        
+        im.image = new int[im.largeur][im.hauteur];
         //A FINIR
     }
 }
