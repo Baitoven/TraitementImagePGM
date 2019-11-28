@@ -19,8 +19,8 @@ public class ImagePGM {
     private String filename;
     private BufferedWriter bufferedWriter;
     private String commentaire;
-    private float largeur;
-    private float hauteur;
+    private int largeur;
+    private int hauteur;
     private int nivGrisMax;
     private int[][] image; 
 
@@ -54,7 +54,7 @@ public class ImagePGM {
 
     }
 
-    public void ecriture(int[][] image) {
+    public void ecriture() {
         this.bufferedWriter = null;
 
         try {
@@ -63,8 +63,18 @@ public class ImagePGM {
             // On ecrit dans le fichier
             bufferedWriter.write("P2");
             bufferedWriter.newLine();
-            bufferedWriter.write("#ceci est un commentaire");
+            bufferedWriter.write(this.commentaire);
             bufferedWriter.newLine();
+            bufferedWriter.write(Integer.toString(this.largeur) + " " + Integer.toString(this.hauteur));
+            bufferedWriter.newLine();
+            bufferedWriter.write(this.nivGrisMax);
+            bufferedWriter.newLine();
+            for (int i = 0; i<image.length; i++){
+                for (int j = 0; j<image[i].length; j++) {
+                    bufferedWriter.write(Integer.toString(image[i][j]) + " ");
+                }
+                bufferedWriter.newLine();
+            }
             // on attrape l'exception si on a pas pu creer le fichier
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
