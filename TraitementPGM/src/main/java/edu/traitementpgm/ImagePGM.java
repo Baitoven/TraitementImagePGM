@@ -66,13 +66,6 @@ public class ImagePGM {
                 System.out.println("coucou");
                     }
     }
-    
-    /**
-     *
-     */
-    public void lecture() {
-
-    }
 
     public void ecriture(int[][] image) {
         this.bufferedWriter = null;
