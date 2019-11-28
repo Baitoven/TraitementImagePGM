@@ -5,10 +5,8 @@
  */
 package edu.traitementpgm;
 
-import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.util.StringTokenizer;
 
 /**
  *
@@ -18,6 +16,7 @@ public class ImagePGM {
 
     private String filename;
     private BufferedWriter bufferedWriter;
+    private BufferedReader bufferedReader;
     private String commentaire;
     private int largeur;
     private int hauteur;
@@ -41,18 +40,33 @@ public class ImagePGM {
     }
 
     //Constructeur à partir d'un fichier
-    public ImagePGM(String file) {
 
+    public ImagePGM(String file) throws FileNotFoundException, IOException{
+        this.filename = file;
+        try {
+            String ligne;
+            String delimiteurs = " .;,";
+            bufferedReader = new BufferedReader(new FileReader(file));
+            ligne = bufferedReader.readLine();
+            this.commentaire = ligne;
+            ligne = bufferedReader.readLine();
+            StringTokenizer tokenizer1 = new StringTokenizer(ligne, delimiteurs);
+            this.largeur = Integer.parseInt(tokenizer1.nextToken());
+            this.hauteur = Integer.parseInt(tokenizer1.nextToken());
+            ligne = bufferedReader.readLine();
+            StringTokenizer tokenizer2 = new StringTokenizer(ligne, delimiteurs);
+            this.nivGrisMax = Integer.parseInt(tokenizer2.nextToken());
+            for (int i=0; i<largeur; i++){
+                for(int j =0; j<hauteur; j++){
+                    image[i][j] = Integer.parseInt(tokenizer1.nextToken());
+                }
+            }
+        } catch (Exception e1) {
+                System.out.println("coucou");
+                    }
     }
 
-    /**
-     *
-     */
-    public void lecture() {
-
-    }
-
-    public void ecriture() {
+    public void ecriture(int[][] image) {
         this.bufferedWriter = null;
 
         try {
@@ -61,11 +75,7 @@ public class ImagePGM {
             // On ecrit dans le fichier
             bufferedWriter.write("P2");
             bufferedWriter.newLine();
-            bufferedWriter.write(this.commentaire);
-            bufferedWriter.newLine();
-            bufferedWriter.write(Integer.toString(this.largeur) + " " + Integer.toString(this.hauteur));
-            bufferedWriter.newLine();
-            bufferedWriter.write(this.nivGrisMax);
+            bufferedWriter.write("#ceci est un commentaire");
             bufferedWriter.newLine();
             for (int i = 0; i < image.length; i++) {
                 for (int j = 0; j < image[i].length; j++) {
