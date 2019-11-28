@@ -10,6 +10,16 @@ package edu.traitementpgm;
  * @author Julien
  */
 public class ImagePGM {
+    private String commentaire;
+    private float largeur;
+    private float hauteur;
+    private int nivGrisMax;
+    private int[][] image; 
+    
+    //Constructeur à partir d'un fichier
+    public ImagePGM(String file){
+        
+    }
     
     /**
      *
