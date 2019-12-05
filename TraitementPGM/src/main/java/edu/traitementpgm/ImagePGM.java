@@ -56,12 +56,6 @@ public class ImagePGM {
         this.nivGrisMax = nivGrisMax;
     }
     
-    
-    
-    
-    
-    
-    
 
     public String getFilename() {
         return filename;
@@ -116,6 +110,8 @@ public class ImagePGM {
             bufferedWriter.write("P2");
             bufferedWriter.newLine();
             bufferedWriter.write("#ceci est un commentaire");
+            bufferedWriter.newLine();
+            bufferedWriter.write(Integer.toString(this.largeur) + " "+ Integer.toString(this.hauteur));
             bufferedWriter.newLine();
             for (int i = 0; i < image.length; i++) {
                 for (int j = 0; j < image[i].length; j++) {
