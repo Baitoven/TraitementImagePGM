@@ -6,6 +6,7 @@
 package edu.traitementpgm;
 
 import java.io.*;
+import static java.lang.Math.*;
 import java.util.StringTokenizer;
 
 /**
@@ -127,5 +128,29 @@ public class ImagePGM {
         
         im.image = new int[im.largeur][im.hauteur];
         //A FINIR
+    }
+    
+    public void diff() throws IOException {
+        // récupération des 2 images
+        ImagePGM im1 = new ImagePGM("image1.pgm");
+        ImagePGM im2 = new ImagePGM("image2.pgm");
+        // on suppose que les 2 images sont de la même taille
+        ImagePGM imdiff = new ImagePGM("diff12.pgm");
+        for (int i = 0; i < im1.image.length; i++) {
+            for (int j = 0; j < im1.image[i].length; j++) {
+                imdiff.image[i][j] = abs(im1.image[i][j] - im2.image[i][j]);
+            }
+        }
+    }
+    
+    public void seuil(int val_seuil) throws IOException {
+        // récupération des 2 images
+        ImagePGM im1 = new ImagePGM("image1.pgm");
+        ImagePGM imseuil = new ImagePGM("immseuil.pgm");
+        for (int i = 0; i < im1.image.length; i++) {
+            for (int j = 0; j < im1.image[i].length; j++) {
+               imseuil.image[i][j] = max(val_seuil,im1.image[i][j]);
+            }
+        }
     }
 }
