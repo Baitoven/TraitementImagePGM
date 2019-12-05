@@ -14,6 +14,7 @@ import java.util.StringTokenizer;
  * @author Julien
  */
 public class ImagePGM {
+    
 
     private String filename;
     private BufferedWriter bufferedWriter;
@@ -23,6 +24,20 @@ public class ImagePGM {
     private int hauteur;
     private int nivGrisMax;
     private int[][] image;
+    
+    
+    public static void main(String[] args) throws IOException {
+        ImagePGM im = new ImagePGM("image_test.pgm");
+        int[][] val = new int[100][100];
+        im.ecriture(val);
+    }
+    
+    
+    
+    
+    
+    
+    
 
     public String getFilename() {
         return filename;
